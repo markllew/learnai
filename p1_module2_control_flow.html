@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P1/M2: Control Flow - AI Coding Journey</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding"><h1><a href="index.html"><span>AI</span> Coding Journey</a></h1></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="current"><a href="phase1.html">Phase 1</a></li>
+                    <li><a href="#">Phase 2</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container main-content">
+        <h2>Module 2: Control Flow</h2>
+        <p class="lead">Making Decisions and Repeating Actions</p>
+
+        <img src="https://placehold.co/900x300/e6f7ff/007bff?text=Control+Flow" alt="Abstract representation of decision paths" class="module-image">
+
+        <p>So far, our programs have run from top to bottom, one line at a time. But the real power of programming comes from controlling <em>which</em> lines of code are executed and <em>how many times</em>. This is called control flow, and it allows our programs to react to different situations and handle repetitive tasks efficiently.</p>
+
+        <h3>1. Conditional Statements: `if`, `elif`, `else`</h3>
+        <p>Conditional statements allow you to run certain blocks of code only if a specific condition is true. The fundamental building blocks are <code>if</code>, <code>elif</code> (short for "else if"), and <code>else</code>.</p>
+        <ul>
+            <li><code>if</code>: Checks a condition. If it's <code>True</code>, the code inside the block runs.</li>
+            <li><code>elif</code>: If the first <code>if</code> was <code>False</code>, Python checks the <code>elif</code> condition. You can have multiple <code>elif</code> statements.</li>
+            <li><code>else</code>: If all preceding <code>if</code> and <code>elif</code> conditions were <code>False</code>, the <code>else</code> block runs.</li>
+        </ul>
+        <p>You can create complex conditions using logical operators: <code>and</code>, <code>or</code>, and <code>not</code>.</p>
+
+        <pre><code>
+# A program to decide what to wear
+temperature_c = 22
+is_raining = False
+
+if temperature_c > 25 and not is_raining:
+    print("It's hot and sunny! Wear shorts and a t-shirt.")
+elif temperature_c > 15 and is_raining:
+    print("It's mild but raining. A light jacket and an umbrella are a good idea.")
+elif temperature_c <= 15:
+    print("It's cold. Wear a warm coat.")
+else:
+    print("Enjoy the mild weather!")
+        </code></pre>
+
+        <div class="bigger-picture special-box">
+            <h3>The Bigger Picture: AI and Decision Making</h3>
+            <p>At a much more complex scale, AI models are all about making decisions. A spam filter uses conditions to decide "spam or not spam." A self-driving car uses conditions to decide "accelerate, brake, or turn." Understanding simple <code>if</code> statements is the first step toward understanding these complex decision-making systems.</p>
+        </div>
+
+        <h3>2. Loops: Repeating Code</h3>
+        <p>Loops are used to execute a block of code multiple times. This is essential for working with collections of data or performing a task until a condition is met.</p>
+        
+        <h4><code>for</code> loops</h4>
+        <p>Used for iterating over a sequence (like a list, a string, or a range of numbers). You use a <code>for</code> loop when you know how many times you want to repeat.</p>
+        <pre><code>
+# Loop through a list of items
+fruits = ["apple", "banana", "cherry"]
+for fruit in fruits:
+    print(f"I like to eat {fruit}s.")
+
+# Loop a specific number of times
+for i in range(5):  # range(5) generates numbers 0, 1, 2, 3, 4
+    print(f"This is loop number {i + 1}")
+        </code></pre>
+
+        <h4><code>while</code> loops</h4>
+        <p>Used to repeat a block of code as long as a condition is <code>True</code>. You use a <code>while</code> loop when you don't know in advance how many repetitions are needed.</p>
+
+        <div class="exercise special-box">
+            <h3>AI-Proof Exercise: The Number Guessing Game</h3>
+            <p>Develop a simple number guessing game where the computer randomly chooses a number between 1 and 100, and the user has 7 attempts to guess it. After each guess, the program should tell the user if their guess was too high, too low, or correct.</p>
+            <p><strong>Challenge:</strong> After the game ends (either by winning or running out of guesses), ask the user if they want to play again. If they type "yes", the game should restart. If they type anything else, the program should thank them and exit. This will require nesting your game logic inside an outer <code>while</code> loop.</p>
+        </div>
+
+        <div class="debug-challenge special-box">
+            <h3>Debugging Challenge: The Infinite Loop</h3>
+            <p>What is wrong with the following code? It's supposed to print numbers from 1 to 5. How would you fix it? What is the name for this common problem?</p>
+            <pre><code>
+num = 1
+while num <= 5:
+    print(num)
+    # Hint: Something is missing here! The variable 'num' is never changed.
+            </code></pre>
+            <p>This is called an <strong>infinite loop</strong>. To fix it, you must ensure the condition of the `while` loop can eventually become `False`. In this case, you need to increment `num` inside the loop by adding `num = num + 1` or `num += 1`.</p>
+        </div>
+    </div>
+
+    <footer><p>AI Coding Journey &copy; 2025</p></footer>
+    <script src="main.js"></script>
+</body>
+</html>

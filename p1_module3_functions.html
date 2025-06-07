@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P1/M3: Functions - AI Coding Journey</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding"><h1><a href="index.html"><span>AI</span> Coding Journey</a></h1></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="current"><a href="phase1.html">Phase 1</a></li>
+                    <li><a href="#">Phase 2</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container main-content">
+        <h2>Module 3: Functions</h2>
+        <p class="lead">Creating Reusable and Organized Blocks of Code</p>
+
+        <img src="https://placehold.co/900x300/e6f7e9/28a745?text=Functions" alt="Abstract representation of function blocks" class="module-image">
+
+        <p>Imagine writing a large program where you need to perform the same task over and over again. You could copy and paste the code, but that's inefficient and makes your code hard to update. Functions solve this problem by letting you package a block of code, give it a name, and call it whenever you need it. This is a core principle of programming known as <span class="popout-trigger" data-popout-text="DRY: Don't Repeat Yourself. A key principle in software development aimed at reducing repetition of code to improve maintainability, readability, and reduce bugs.">DRY</span>.</p>
+
+        <h3>1. Defining and Calling a Function</h3>
+        <p>You define a function using the <code>def</code> keyword, followed by the function's name, parentheses <code>()</code>, and a colon <code>:</code>. The code inside the function must be indented. A <span class="popout-trigger" data-popout-text="A docstring is a string literal that occurs as the first statement in a module, function, class, or method definition. It is used to document what the code does.">docstring</span> is a good practice for explaining your function's purpose.</p>
+        <pre><code>
+# Define a simple function
+def greet_user():
+    """This is a docstring. It explains what the function does."""
+    print("Hello and welcome to the program!")
+
+# Call the function to execute its code
+greet_user()
+greet_user()
+        </code></pre>
+
+        <h3>2. Parameters and Arguments</h3>
+        <p>Functions become much more powerful when you can pass information into them. A <strong>parameter</strong> is the variable placeholder in the function definition, and an <strong>argument</strong> is the actual value you pass in when you call the function.</p>
+        <pre><code>
+def greet_by_name(name, greeting="Hello"): # 'greeting' has a default value
+    """Greets a user with a specific name and optional greeting."""
+    print(f"{greeting}, {name}!")
+
+# Call the function with different arguments
+greet_by_name("Alice") # Uses the default greeting
+greet_by_name("Bob", "Good morning") # Overrides the default
+        </code></pre>
+        
+        <h3>3. Return Values</h3>
+        <p>Functions can also process information and send a result back to the code that called them using the <code>return</code> keyword. This allows you to use the output of a function in other parts of your code.</p>
+        <pre><code>
+def calculate_area(width, height):
+    """Calculates the area of a rectangle and returns it."""
+    if width < 0 or height < 0:
+        return None # Return a special value if input is invalid
+    return width * height
+
+# Call the function and store the result in a variable
+rect_area = calculate_area(10, 5)
+if rect_area is not None:
+    print(f"The area is: {rect_area}")
+    print(f"The area of a second rectangle is: {calculate_area(3, 7)}")
+else:
+    print("Invalid input for width or height.")
+        </code></pre>
+
+        <div class="exercise special-box">
+            <h3>AI-Proof Exercise: The Text Analyzer</h3>
+            <p>Write a function called <code>analyze_text</code> that takes one argument: a string of text.</p>
+            <p>This function should <strong>return a dictionary</strong> where the keys are the unique words in the text and the values are the number of times each word appeared. The function should be case-insensitive and should ignore basic punctuation (.,!?).</p>
+            <p><strong>Challenge:</strong> Break your logic into smaller helper functions. For example, you could have one function <code>clean_text(raw_string)</code> that takes the raw string and returns a clean list of words, and your main <code>analyze_text</code> function could then call this helper function before counting the words. This practice of breaking down complex problems is crucial in programming.</p>
+        </div>
+
+        <div class="ethical-spotlight special-box">
+            <h3>Ethical Spotlight: Algorithmic Bias in Functions</h3>
+            <p>Imagine a function <code>is_professional(text)</code> designed to scan emails for a hiring platform. If the logic inside this function was built on data where certain dialects or names were disproportionately marked as "unprofessional," the function would learn and perpetuate this bias. Even a small, seemingly simple function can have significant ethical implications if its internal logic is flawed or built on biased data.</p>
+        </div>
+    </div>
+
+    <footer><p>AI Coding Journey &copy; 2025</p></footer>
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P1/M4: Data Structures - AI Coding Journey</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding"><h1><a href="index.html"><span>AI</span> Coding Journey</a></h1></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="phase1.html">Phase 1</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container main-layout">
+        <main class="content-card">
+            <h2>Module 4: Data Structures (Part 1)</h2>
+            <p class="lead">Organizing Data with Lists, Dictionaries, and Sets</p>
+
+            <img src="https://placehold.co/800x250/faf5ff/9333ea?text=Data+Structures" alt="Abstract representation of data structures" class="module-image">
+            
+            <p>So far, we've stored single pieces of data in variables. But what happens when we have collections of related data? Data structures are specialized formats for organizing, storing, and accessing data. Choosing the right one can dramatically affect your program's efficiency and readability.</p>
+
+            <h3 id="section-0">1. Lists: Ordered and Changeable</h3>
+            <p>A <strong>list</strong> is an ordered collection of items, which means the items have a defined order that will not change unless you change it. Lists are also <strong>mutable</strong>, meaning you can add, remove, or change items after the list has been created. They are defined with square brackets <code>[]</code> and are your go-to for ordered sequences.</p>
+            <pre><code># A list of tasks for an AI model
+training_pipeline = ["Load Data", "Clean Data", "Scale Features", "Train Model", "Evaluate"]
+print(f"First step: {training_pipeline[0]}") # Access by index (starts at 0)
+
+training_pipeline.append("Deploy Model") # Add an item to the end
+training_pipeline[1] = "Clean and Augment Data" # Change an item
+print(training_pipeline)</code></pre>
+
+            <h3 id="section-1">2. Dictionaries: Key-Value Pairs</h3>
+            <p>A <strong>dictionary</strong> is an unordered collection of key-value pairs. Instead of being accessed by a numerical index, items are accessed via a unique <code>key</code>. Dictionaries are mutable and are defined with curly braces <code>{}</code>. They are incredibly useful for storing structured information, like configuration settings or feature sets.</p>
+            <pre><code># A dictionary for a model's configuration
+model_config = {
+    "model_name": "ResNet50",
+    "learning_rate": 0.001,
+    "epochs": 20,
+    "has_regularization": True
+}
+print(f"Learning Rate: {model_config['learning_rate']}") # Access by key
+
+model_config["epochs"] = 25 # Update a value
+model_config["optimizer"] = "Adam" # Add a new key-value pair
+print(model_config)</code></pre>
+
+            <h3 id="section-2">3. Sets: Unordered and Unique</h3>
+            <p>A <strong>set</strong> is an unordered collection with no duplicate elements. They are mutable. Sets are highly optimized for membership testing (checking if an item is in the set) and for mathematical set operations like <span class="popout-trigger" data-popout-text="<b>Union:</b> All items from both sets.<br><b>Intersection:</b> Only items that appear in both sets.<br><b>Difference:</b> Items in the first set but not in the second.">union and intersection</span>.</p>
+            <pre><code># A set of features to be excluded from a model
+excluded_features = {"user_id", "timestamp", "raw_text", "timestamp"}
+print(excluded_features) # Output will not have the duplicate "timestamp"
+
+# Membership testing is very fast and a common use case
+feature_to_check = "user_id"
+if feature_to_check in excluded_features:
+    print(f"'{feature_to_check}' will be excluded.")
+</code></pre>
+
+            <div class="exercise special-box">
+                <h3>AI-Proof Exercise: Contact Book</h3>
+                <p>You are building a simple command-line contact book.</p>
+                <ol>
+                    <li>Choose the main data structure to store your contacts. Each contact should have a name, phone number, and email. <strong>Justify your choice in a comment:</strong> why is a list of dictionaries, a dictionary of dictionaries, or some other structure the best fit for this problem?</li>
+                    <li>Write three functions:
+                        <ul>
+                            <li><code>add_contact(book, name, phone, email)</code>: Adds a new contact.</li>
+                            <li><code>find_contact(book, name)</code>: Finds and prints the details of a contact by name.</li>
+                            <li><code>list_all_contacts(book)</code>: Prints all contacts.</li>
+                        </ul>
+                    </li>
+                </ol>
+                <p><strong>Challenge:</strong> Add a feature to prevent duplicate names from being added. If a user tries to add a contact with a name that already exists, your function should print an error message and not add the contact. This requires you to efficiently check for existence before adding.</p>
+            </div>
+        </main>
+        <aside>
+            <nav class="toc-container">
+                <h3>On This Page</h3>
+                <ul class="toc">
+                    </ul>
+            </nav>
+        </aside>
+    </div>
+
+    <footer><p>AI Coding Journey &copy; 2025</p></footer>
+    <script src="main.js"></script>
+</body>
+</html>
