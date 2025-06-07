@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P1/M5: Math Break - AI Coding Journey</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding"><h1><a href="index.html"><span>AI</span> Coding Journey</a></h1></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="current"><a href="phase1.html">Phase 1</a></li>
+                    <li><a href="#">Phase 2</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container main-content">
+        <h2>Module 5: Math Break 1 - Foundational Logic & Algebra</h2>
+        <p>Programming isn't just about writing code; it's about solving problems using logic. In this math break, we'll connect the mathematical concepts of logic and algebra to the programming constructs you've already learned. This foundation is critical for understanding how AI models "reason" about data.</p>
+
+        <h3>1. Propositional Logic</h3>
+        <p>This is the formal study of logical statements. It directly maps to <code>if</code> statements in Python. The statement <code>IF P THEN Q</code> is crucial. It means that if P is true, Q must also be true.</p>
+        <p>Consider this <span class="popout-trigger" data-popout-text="P: A dog walked on wet sand. Q: There are dog footprints. If P is true, Q must be true. But if we see footprints (Q is true), we can't be 100% certain a dog just walked there (P could be false if the prints are old).">real-world example</span>. If it is raining, then the ground is wet. But if the ground is wet, it doesn't necessarily mean it's raining (a sprinkler could be on). This is a common logical fallacy called "affirming the consequent."</p>
+
+        <h3>2. Algebra and Functions</h3>
+        <p>In algebra, a function like $f(x) = 2x + 5$ is a rule that maps an input $x$ to a single, predictable output. Solving equations like $2x + 5 = 15$ is the basis of how machine learning models are trained—by finding the right internal parameters ($x$) that produce the desired output.</p>
+        
+        <div class="exercise special-box">
+            <h3>Interactive Quiz: Check Your Understanding</h3>
+            <p>Test your knowledge with this quick quiz. Check your answers and review the guidance below.</p>
+            <form id="math-quiz">
+                <div class="quiz-question" style="margin-bottom: 15px;">
+                    <h4>Question 1: Logic</h4>
+                    <p>Let P = "The server is online" and Q = "The website is loading". The expression <code>NOT (P AND Q)</code> is true if:</p>
+                    <label><input type="radio" name="q1" value="a"> The server is online AND the website is loading.</label><br>
+                    <label><input type="radio" name="q1" value="b"> The server is offline OR the website is not loading (or both).</label><br>
+                    <label><input type="radio" name="q1" value="c"> The server is offline AND the website is not loading.</label>
+                </div>
+                <div class="quiz-question" style="margin-bottom: 15px;">
+                    <h4>Question 2: Sets</h4>
+                    <p>Let Set A = `{"apple", "banana", "cherry"}` and Set B = `{"banana", "date", "fig"}`. What is the intersection of A and B (<code>A & B</code> in Python)?</p>
+                    <label><input type="radio" name="q2" value="a"> `{"apple", "cherry"}`</label><br>
+                    <label><input type="radio" name="q2" value="b"> `{"apple", "banana", "cherry", "date", "fig"}`</label><br>
+                    <label><input type="radio" name="q2" value="c"> `{"banana"}`</label>
+                </div>
+                <div class="quiz-question" style="margin-bottom: 15px;">
+                    <h4>Question 3: Algebra</h4>
+                    <p>If a function is defined as $f(w) = 4w - 3$, for what value of $w$ is $f(w) = 17$?</p>
+                    <label><input type="radio" name="q3" value="a"> w = 5</label><br>
+                    <label><input type="radio" name="q3" value="b"> w = 65</label><br>
+                    <label><input type="radio" name="q3" value="c"> w = 3.5</label>
+                </div>
+                <br>
+                <button type="button" id="submit-quiz-btn" style="padding: 10px 15px; border: none; background-color: #007bff; color: white; border-radius: 5px; cursor: pointer;">Check Answers</button>
+            </form>
+            <div id="quiz-results" style="display:none; margin-top: 20px; padding: 15px; background-color: #eef; border-radius: 5px;"></div>
+        </div>
+    </div>
+
+    <footer><p>AI Coding Journey &copy; 2025</p></footer>
+    <script src="main.js"></script>
+</body>
+</html>

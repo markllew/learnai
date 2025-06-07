@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P3/M3: Evaluation Metrics - AI Coding Journey</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding"><h1><a href="index.html"><span>AI</span> Coding Journey</a></h1></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="phase1.html">Phase 1</a></li>
+                    <li><a href="#">Phase 2</a></li>
+                    <li class="current"><a href="#">Phase 3</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container main-content">
+        <h2>Module 3: Data Preprocessing & Model Evaluation</h2>
+        <p>A machine learning model is only as good as the data it's trained on and the metrics used to evaluate it. In this module, we'll learn how to prepare our data for modeling and how to critically assess a model's performance.</p>
+        
+        <h3>The Problem with Accuracy: An Introduction to Evaluation</h3>
+        <p>Imagine you build a model to detect a rare disease that only affects 1 in 1000 people. A model that simply predicts "no disease" every time will be 99.9% accurate! Yet, it's completely useless for its intended purpose. This shows why accuracy alone can be a dangerously misleading metric.</p>
+        
+        <h3>The Confusion Matrix</h3>
+        <p>To truly understand a classification model's performance, we use a <strong>Confusion Matrix</strong>. It's a table that breaks down our predictions into four categories:</p>
+        <ul>
+            <li><strong>True Positives (TP):</strong> The model correctly predicted the positive class. (Correctly identified disease).</li>
+            <li><strong>True Negatives (TN):</strong> The model correctly predicted the negative class. (Correctly identified no disease).</li>
+            <li><strong>False Positives (FP):</strong> The model incorrectly predicted the positive class. (Type I Error).</li>
+            <li><strong>False Negatives (FN):</strong> The model incorrectly predicted the negative class. (Type II Error).</li>
+        </ul>
+        <p>From this matrix, we can derive more meaningful metrics.</p>
+
+        <h3>Precision, Recall, and F1-Score</h3>
+        <p><strong>Precision:</strong> Of all the times the model predicted "positive," how often was it right? It answers: "How trustworthy is a positive prediction?" Formula: <code>TP / (TP + FP)</code></p>
+        <p><strong>Recall (Sensitivity):</strong> Of all the actual positive cases, how many did the model find? It answers: "How well does the model find all positive cases?" Formula: <code>TP / (TP + FN)</code></p>
+        <p>There is often a trade-off between Precision and Recall. The <strong>F1-Score</strong> is the harmonic mean of the two, providing a single score that balances both concerns.</p>
+
+        <div class="exercise special-box">
+            <h3>AI-Proof Exercise: Critical Equipment Failure</h3>
+            <p>You are building a model to predict a rare but critical equipment failure in a nuclear power plant.</p>
+            <ol>
+                <li>What is the 'positive' class here? What is the 'negative' class?</li>
+                <li>Which would be more costly: a <strong>False Positive</strong> (model predicts failure, but there isn't one, leading to an unnecessary shutdown) or a <strong>False Negative</strong> (model misses a real failure, leading to a potential disaster)?</li>
+                <li>Based on your answer, should you prioritize optimizing for Precision or Recall? Explain your reasoning in detail and describe the potential downside of your choice.</li>
+            </ol>
+        </div>
+
+        <div class="debug-challenge special-box">
+            <h3>Debugging Challenge</h3>
+            <p>A junior data scientist trains a model and proudly reports an F1-Score of 0.95. You look at their code and see they never split their data into training and testing sets; they calculated the F1-score on the same data they used for training. Explain why their reported score is likely inflated and unreliable. What should they do instead?</p>
+        </div>
+
+    </div>
+    <footer><p>AI Coding Journey &copy; 2025</p></footer>
+<script src="main.js"></script>
+</body>
+</html>

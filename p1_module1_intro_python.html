@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P1/M1: Intro to Python - AI Coding Journey</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding"><h1><a href="index.html"><span>AI</span> Coding Journey</a></h1></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="current"><a href="phase1.html">Phase 1</a></li>
+                    <li><a href="#">Phase 2</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container main-content">
+        <h2>Module 1: Introduction to Programming and Python</h2>
+        <p>Welcome to your first module! Here, we'll explore what programming is, why Python is the language of choice for AI, and write our very first lines of code.</p>
+
+        <img src="https://placehold.co/900x300/f3f0ff/6f42c1?text=Python+Fundamentals" alt="Python Logo" class="module-image">
+
+        <h3>What is Programming?</h3>
+        <p>At its heart, programming is giving instructions to a computer. Think of it like writing a very precise <span class="popout-trigger">recipe<span class="popout-box">A recipe has a list of ingredients (data) and a set of steps (instructions). If a step is ambiguous, like 'cook until done', the result can be unpredictable. Computers need exact instructions!</span></span> for a very literal-minded chef (the computer). These instructions, written in a programming language, tell the computer exactly what to do.</p>
+        
+        <h3>Why Python for AI?</h3>
+        <p>Python has become the dominant language for AI and Machine Learning for several key reasons:</p>
+        <ul>
+            <li><strong>Readability:</strong> Its syntax is clean and intuitive, making it easier to learn and read.</li>
+            <li><strong>Vast Libraries:</strong> Python has powerful, specialized libraries for nearly every AI task (e.g., NumPy for numbers, Pandas for data, Scikit-learn for ML, TensorFlow/PyTorch for Deep Learning).</li>
+            <li><strong>Strong Community:</strong> A massive global community means you can find help and resources for almost any problem.</li>
+        </ul>
+
+        <h3>Variables and Data Types</h3>
+        <p>In programming, we store information in <strong>variables</strong>. Each piece of information has a <strong>data type</strong> that tells the computer what kind of data it is.</p>
+        <pre><code># A variable 'name' storing a string (text)
+name = "Alice"
+
+# A variable 'age' storing an integer (whole number)
+age = 30
+
+# A variable 'height_meters' storing a float (decimal number)
+height_meters = 1.75
+
+# A variable 'is_student' storing a boolean (True/False)
+is_student = True
+
+print(f"Hello, my name is {name}.")</code></pre>
+
+        <div class="exercise special-box">
+            <h3>AI-Proof Exercise: The "100 Years" Program</h3>
+            <p>Write a Python script that asks for a user's name and age. Then, it should print a message like: 'Hello [Name], you will be 100 years old in the year [Year].'</p>
+            <p><strong>Challenge:</strong> The program must identify if the entered age is unrealistic (e.g., negative or over 120) and provide a thoughtful, non-generic error message instead of crashing. Document your reasoning for handling the 'unrealistic' age with comments in your code.</p>
+            <p><strong>Follow-up Challenge:</strong> Extend your program. If the user enters an age that suggests they are already 100 or older, the program should respond with a different, appropriate message. Also, ask for the current year to make the calculation more robust.</p>
+        </div>
+
+        <div class="ethical-spotlight special-box">
+            <h3>Ethical Spotlight: Data Privacy</h3>
+            <p>Even this simple program asks for personal data (name and age). Consider: Where could this data be stored? Who might access it? It's a fundamental principle of ethical software design to be transparent with users about what data you collect and why, even for the smallest applications.</p>
+        </div>
+
+        <div class="historical-context special-box">
+            <h3>Historical Context</h3>
+            <p>Python was created by Guido van Rossum and first released in 1991. Its design philosophy emphasizes code readability, famously captured in the "Zen of Python" (try typing <code>import this</code> into a Python interpreter!).</p>
+        </div>
+
+    </div>
+    <footer><p>AI Coding Journey &copy; 2025</p></footer>
+<script src="main.js"></script>
+</body>
+</html>
