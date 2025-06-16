@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P3/M2: Your First Models with Scikit-learn - AI Coding Journey</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding"><h1><a href="index.html"><span>AI</span> Coding Journey</a></h1></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="phase2.html">Phase 2</a></li>
+                    <li><a href="phase3.html">Phase 3</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container main-layout">
+        <main class="content-card">
+            <h2>Module 2: Your First Models with Scikit-learn</h2>
+            <p class="lead">From Theory to Practice with a Core ML Library</p>
+            
+            <p>Scikit-learn is a simple and efficient library for predictive data analysis. It features a clean, consistent API that makes it easy to build, train, and evaluate machine learning models.</p>
+
+            <h3 id="section-0">1. The Scikit-learn API: Estimators</h3>
+            <p>The core of Scikit-learn is the "Estimator" object. An estimator is any object that learns from data. The key methods are:</p>
+            <ul>
+                <li><code>estimator.fit(X, y)</code>: Trains the model. <code>X</code> represents the features (your input data) and <code>y</code> represents the target (the labels you want to predict).</li>
+                <li><code>estimator.predict(X_new)</code>: Makes predictions on new, unseen data.</li>
+                <li><code>estimator.score(X, y)</code>: Evaluates the model's performance on a given dataset.</li>
+            </ul>
+            <p>This consistent API applies to all algorithms in the library, making it easy to swap models.</p>
+
+            <h3 id="section-1">2. Your First Classification Model: k-Nearest Neighbors (kNN)</h3>
+            <p>kNN is a simple, intuitive algorithm. To classify a new data point, it looks at the 'k' closest labeled data points in its training set (its "neighbors") and takes a majority vote among them.</p>
+            <pre><code>from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
+
+# 1. Load and split data
+iris = load_iris()
+X_train, X_test, y_train, y_test = train_test_split(iris.data, iris.target, test_size=0.3, random_state=42)
+
+# 2. Initialize and train the model
+# The 'k' is set by the n_neighbors parameter
+knn = KNeighborsClassifier(n_neighbors=3)
+knn.fit(X_train, y_train)
+
+# 3. Make predictions and evaluate
+y_pred = knn.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+print(f"kNN Model Accuracy: {accuracy:.2f}")
+            </code></pre>
+            <p><span class="popout-trigger" data-popout-text="kNN is a 'lazy learner' because it doesn't build a complex internal model. It simply stores the entire training dataset and uses it directly during prediction. This makes training fast but prediction slow for large datasets.">Why is feature scaling important for kNN?</span> Because kNN is based on distance, features with larger scales (like salary) can dominate features with smaller scales (like age), skewing the distance calculation. It's crucial to scale your data first!</p>
+
+            <h3 id="section-2">3. Your First Regression Model: Linear Regression</h3>
+            <p>Linear Regression aims to find the best-fitting straight line (or hyperplane) through the data. It models the relationship between a dependent variable (y) and one or more independent variables (X) by fitting a linear equation to the observed data.</p>
+            <pre><code>from sklearn.datasets import fetch_california_housing
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+
+# 1. Load and split data
+housing = fetch_california_housing()
+X_train, X_test, y_train, y_test = train_test_split(housing.data, housing.target, test_size=0.3, random_state=42)
+
+# 2. Initialize and train the model
+lin_reg = LinearRegression()
+lin_reg.fit(X_train, y_train)
+
+# 3. Make predictions and evaluate
+y_pred = lin_reg.predict(X_test)
+mse = mean_squared_error(y_test, y_pred)
+print(f"Linear Regression MSE: {mse:.2f}")
+
+# The model has learned coefficients for each feature
+# print("Coefficients:", lin_reg.coef_)
+            </code></pre>
+
+            <div class="exercise special-box">
+                <h3>AI-Proof Exercise: Model Interpretation</h3>
+                <p>Using the Linear Regression example above:</p>
+                <ol>
+                    <li>The model learns a coefficient for each feature. Print the coefficients using `lin_reg.coef_` and match them to the feature names in `housing.feature_names`.</li>
+                    <li>Choose one feature and interpret its coefficient. For example, "A one-unit increase in [Feature Name], holding all other features constant, is associated with a [Coefficient Value] change in the housing price."</li>
+                    <li>Why might this simple interpretation be misleading in a real-world scenario? (Hint: Think about whether features are truly independent of each other).</li>
+                </ol>
+            </div>
+        </main>
+        <aside>
+            <nav class="toc-container">
+                <h3>On This Page</h3>
+                <ul class="toc"></ul>
+            </nav>
+        </aside>
+    </div>
+
+    <footer><p>AI Coding Journey &copy; 2025</p></footer>
+    <script src="main.js"></script>
+</body>
+</html>

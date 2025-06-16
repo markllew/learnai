@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P2/M1: NumPy and Pandas - AI Coding Journey</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding"><h1><a href="index.html"><span>AI</span> Coding Journey</a></h1></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="phase1.html">Phase 1</a></li>
+                    <li><a href="phase2.html">Phase 2</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container main-layout">
+        <main class="content-card">
+            <h2>Module 1: NumPy and Pandas</h2>
+            <p class="lead">The Workhorses of Data Science in Python</p>
+            
+            <p>Welcome to the libraries that power nearly every data science and machine learning project in Python. NumPy provides the foundation for efficient numerical computation, while Pandas offers high-level data structures and analysis tools.</p>
+
+            <h3 id="section-0">1. NumPy: Numerical Python</h3>
+            <p>NumPy's core feature is the powerful N-dimensional array object, or <code>ndarray</code>. These arrays are <span class="popout-trigger" data-popout-text="<b>Homogeneous:</b> All elements must be of the same data type.<br><b>Fixed-size:</b> The size of the array is fixed at creation.">homogeneous and fixed-size</span>, which allows NumPy to perform mathematical operations on them much faster than with standard Python lists.</p>
+            <pre><code>import numpy as np
+
+# Create a NumPy array from a Python list
+my_list = [1, 2, 3, 4, 5]
+my_array = np.array(my_list)
+
+# Perform a vectorized operation (much faster than a loop)
+doubled_array = my_array * 2
+print(doubled_array) # Output: [ 2  4  6  8 10]
+
+# Create a 2D array (a matrix)
+matrix = np.array([[1, 2, 3], [4, 5, 6]])
+print(matrix.shape) # Output: (2, 3) -> 2 rows, 3 columns
+            </code></pre>
+            
+            <div class="bigger-picture special-box">
+                <h3>The Bigger Picture: Data as Numbers</h3>
+                <p>AI models, especially neural networks, understand only numbers. An image is just a matrix of pixel values. Text is converted into numerical vectors. Sound is a sequence of numbers representing amplitudes. NumPy is the fundamental tool for representing and manipulating this data efficiently.</p>
+            </div>
+
+            <h3 id="section-1">2. Pandas: Python Data Analysis Library</h3>
+            <p>Pandas introduces two primary data structures: the <strong>Series</strong> (a 1D labeled array, like a single column) and the <strong>DataFrame</strong> (a 2D labeled array, like a spreadsheet or SQL table). It's the ultimate tool for data cleaning, transformation, and analysis.</p>
+            <pre><code>import pandas as pd
+
+# Create a DataFrame from a dictionary
+data = {
+    'ProductID': ['A1', 'B2', 'A1', 'C3', 'B2'],
+    'SaleAmount': [100, 150, 120, 200, 140],
+    'Region': ['North', 'South', 'North', 'West', 'South']
+}
+df = pd.DataFrame(data)
+
+# Inspect the data
+print(df.head()) # Shows the first 5 rows
+
+# Select a column (a Series)
+sales = df['SaleAmount']
+print(f"Total Sales: {sales.sum()}")
+
+# Perform powerful grouping operations
+sales_by_region = df.groupby('Region')['SaleAmount'].sum()
+print(sales_by_region)
+            </code></pre>
+
+            <h3 id="section-2">3. Connecting NumPy and Pandas</h3>
+            <p>Pandas is built on top of NumPy. You can easily access the underlying NumPy array of a DataFrame or Series using the <code>.values</code> attribute. This interoperability is key to the Python data science ecosystem.</p>
+
+            <div class="exercise special-box">
+                <h3>AI-Proof Exercise: Sales Data Analysis</h3>
+                <p>You are given a CSV file (create a simple one yourself named `sales.csv`) with columns: `Date`, `Category`, `Product`, `Price`, `QuantitySold`.</p>
+                <ol>
+                    <li>Load the CSV into a Pandas DataFrame.</li>
+                    <li>Create a new column called `TotalRevenue` which is `Price * QuantitySold`.</li>
+                    <li>Find the top-selling product category by total revenue.</li>
+                    <li>Calculate the mean, median, and standard deviation of the `Price`.</li>
+                </ol>
+                <p><strong>Challenge:</strong> Identify the day with the highest total revenue. You will need to convert the `Date` column to a datetime object first using `pd.to_datetime(df['Date'])` and then group by date.</p>
+            </div>
+        </main>
+        <aside>
+            <nav class="toc-container">
+                <h3>On This Page</h3>
+                <ul class="toc"></ul>
+            </nav>
+        </aside>
+    </div>
+
+    <footer><p>AI Coding Journey &copy; 2025</p></footer>
+    <script src="main.js"></script>
+</body>
+</html>

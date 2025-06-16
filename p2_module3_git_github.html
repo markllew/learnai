@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P2/M3: Version Control with Git & GitHub - AI Coding Journey</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding"><h1><a href="index.html"><span>AI</span> Coding Journey</a></h1></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="phase1.html">Phase 1</a></li>
+                    <li><a href="phase2.html">Phase 2</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container main-layout">
+        <main class="content-card">
+            <h2>Module 3: Version Control with Git & GitHub</h2>
+            <p class="lead">Tracking Changes and Collaborating on Code</p>
+            
+            <p>As your projects grow, keeping track of changes, fixing mistakes, and collaborating with others becomes difficult. Version Control Systems (VCS) solve this. Git is the world's most popular VCS, and GitHub is the most popular platform for hosting Git repositories.</p>
+
+            <h3 id="section-0">1. What is Version Control?</h3>
+            <p>Think of version control as an unlimited "undo" button for your entire project. It's a system that records changes to a file or set of files over time so that you can recall specific versions later. It also allows multiple people to work on the same project without overwriting each other's work.</p>
+
+            <h3 id="section-1">2. The Core Git Workflow</h3>
+            <p>The Git workflow primarily involves three "areas" on your local machine:</p>
+            <ol>
+                <li><strong>Working Directory:</strong> The actual files and folders you are currently working on.</li>
+                <li><strong>Staging Area:</strong> A "holding area" where you place the changes you want to include in your next "snapshot" (commit).</li>
+                <li><strong>Repository (`.git` directory):</strong> The database where Git permanently stores all the snapshots (commits) of your project.</li>
+            </ol>
+            <p>The basic workflow is: <strong>Modify files &rarr; Stage changes &rarr; Commit snapshot.</strong></p>
+            <pre><code># 1. Initialize a new Git repository in your project folder
+git init
+
+# 2. Check the status of your files
+git status
+
+# 3. Add a file to the staging area
+git add my_script.py
+
+# 4. Commit the staged changes to your repository with a message
+git commit -m "Initial commit with a basic script"
+
+# 5. View the history of your commits
+git log</code></pre>
+
+            <h3 id="section-2">3. Branching and Merging</h3>
+            <p>This is Git's killer feature. A <span class="popout-trigger" data-popout-text="A branch is essentially an independent line of development. You can create a new branch to work on a feature without affecting the stable main version of your code.">branch</span> is a movable pointer to one of your commits. The default branch is called `main` (or `master`).</p>
+            <p>You can create a new branch to work on a feature (e.g., `feature-add-auth`), and once it's complete and tested, you can **merge** it back into your `main` branch.</p>
+
+            <h3 id="section-3">4. GitHub: Remote Repositories</h3>
+            <p>While Git is the tool on your computer, GitHub is a service that hosts your repositories on the web. This allows you to:</p>
+            <ul>
+                <li>Create a backup of your code.</li>
+                <li>Collaborate with others.</li>
+                <li>Showcase your projects in a portfolio.</li>
+            </ul>
+            <p>The main commands are `git push` (to send your commits to GitHub) and `git pull` (to fetch changes from GitHub).</p>
+
+            <div class="exercise special-box">
+                <h3>AI-Proof Exercise: Branching Workflow</h3>
+                <ol>
+                    <li>Initialize a Git repository for one of your previous exercise projects. Make an initial commit on the `main` branch.</li>
+                    <li>Create a new branch called `refactor`.</li>
+                    <li>On the `refactor` branch, make a significant change to your code (e.g., improve a function, add comments). Make a new commit for this change.</li>
+                    <li>Switch back to the `main` branch. Observe that your changes are gone.</li>
+                    <li>Merge the `refactor` branch into `main`. Observe that your changes have now appeared in `main`.</li>
+                </ol>
+                <p><strong>Challenge:</strong> After merging, you realize there was a bug in your refactor. What Git command would you use to view the commit history and identify the commit hash of the merge? Conceptually, how could you undo this merge if it was causing major problems?</p>
+            </div>
+        </main>
+        <aside>
+            <nav class="toc-container">
+                <h3>On This Page</h3>
+                <ul class="toc"></ul>
+            </nav>
+        </aside>
+    </div>
+
+    <footer><p>AI Coding Journey &copy; 2025</p></footer>
+    <script src="main.js"></script>
+</body>
+</html>

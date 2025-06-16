@@ -1,45 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- 1. Active Navigation Link Styling ---
+    // (Same as previous version)
     const currentPath = window.location.pathname.split('/').pop();
     const navLinks = document.querySelectorAll('header nav a');
     navLinks.forEach(link => {
-        if (link.getAttribute('href') === currentPath) {
+        const linkPath = link.getAttribute('href').split('/').pop();
+        if (linkPath === currentPath) {
             link.parentElement.classList.add('active');
         }
     });
 
     // --- 2. "Copy to Clipboard" for Code Blocks ---
+    // (Same as previous version)
     const codeBlocks = document.querySelectorAll('pre');
     codeBlocks.forEach(block => {
         const copyButton = document.createElement('button');
         copyButton.className = 'copy-btn';
         copyButton.textContent = 'Copy';
         block.appendChild(copyButton);
-
         copyButton.addEventListener('click', () => {
             const code = block.querySelector('code').innerText;
             navigator.clipboard.writeText(code).then(() => {
                 copyButton.textContent = 'Copied!';
-                setTimeout(() => {
-                    copyButton.textContent = 'Copy';
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy text: ', err);
+                setTimeout(() => { copyButton.textContent = 'Copy'; }, 2000);
             });
         });
     });
 
     // --- 3. Interactive Popout Logic ---
+    // (Same as previous version, with innerHTML fix)
     const popoutTriggers = document.querySelectorAll('.popout-trigger');
     popoutTriggers.forEach(trigger => {
         const popoutText = trigger.getAttribute('data-popout-text');
         if (popoutText) {
             const popoutBox = document.createElement('span');
             popoutBox.className = 'popout-box';
-            popoutBox.innerHTML = popoutText.replace(/\n/g, '<br>'); // Support newlines
+            popoutBox.innerHTML = popoutText.replace(/\n/g, '<br>');
             trigger.appendChild(popoutBox);
-
             trigger.addEventListener('click', (e) => {
                 e.stopPropagation();
                 document.querySelectorAll('.popout-box').forEach(box => {
@@ -53,44 +51,72 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.popout-box').forEach(box => box.style.display = 'none');
     });
 
-    // --- 4. Interactive Quiz Logic ---
-    const quizButton = document.getElementById('submit-quiz-btn');
-    if (quizButton) {
-        quizButton.addEventListener('click', () => {
-            // (Quiz logic remains the same as previous version)
-            const answers = { q1: 'b', q2: 'c', q3: 'a' };
-            let score = 0;
-            const wrongQuestions = [];
-            const form = document.getElementById('math-quiz');
-            for (const [question, correctAnswer] of Object.entries(answers)) {
-                const selected = form.querySelector(`input[name="${question}"]:checked`);
-                if (selected && selected.value === correctAnswer) {
-                    score++;
-                } else {
-                    wrongQuestions.push(question);
+    // --- 4. NEW Interactive Quiz Logic (Handles multiple quizzes) ---
+    const quizForm = document.querySelector('.quiz-form');
+    if (quizForm) {
+        const quizId = quizForm.id;
+        const allQuizzes = {
+            'p1-math-quiz': {
+                answers: { q1: 'b', q2: 'c', q3: 'a' },
+                guidance: {
+                    q1: "For Question 1, review De Morgan's Laws. <code>NOT (P AND Q)</code> is equivalent to <code>(NOT P) OR (NOT Q)</code>.",
+                    q2: "For Question 2, remember that set intersection finds only the elements common to <strong>both</strong> sets.",
+                    q3: "For Question 3, review how to solve a linear equation. To solve <code>4w - 3 = 17</code>, first add 3 to both sides, then divide by 4."
                 }
-            }
-            const resultsDiv = document.getElementById('quiz-results');
-            let resultsHTML = `<h3>Your Score: ${score} / 3</h3>`;
-            if (wrongQuestions.length > 0) {
-                resultsHTML += `<h4>Adaptive Guidance:</h4><ul>`;
-                if (wrongQuestions.includes('q1')) resultsHTML += `<li>For Question 1, review De Morgan's Laws. <code>NOT (P AND Q)</code> is equivalent to <code>(NOT P) OR (NOT Q)</code>.</li>`;
-                if (wrongQuestions.includes('q2')) resultsHTML += `<li>For Question 2, remember that set intersection finds only the elements common to <strong>both</strong> sets.</li>`;
-                if (wrongQuestions.includes('q3')) resultsHTML += `<li>For Question 3, review how to solve a linear equation. To solve <code>4w - 3 = 17</code>, first add 3 to both sides, then divide by 4.</li>`;
-                resultsHTML += `</ul>`;
-            } else {
-                resultsHTML += `<p style="color: #15803d; font-weight: bold;">Great job! You answered all questions correctly.</p>`;
-            }
-            resultsDiv.innerHTML = resultsHTML;
-            resultsDiv.style.display = 'block';
-        });
+            },
+            'p2-math-quiz': {
+                answers: { q1: 'c', q2: 'a', q3: 'b' }, // Placeholder answers
+                guidance: {
+                    q1: "Guidance for Phase 2, Question 1 (Vectors).",
+                    q2: "Guidance for Phase 2, Question 2 (Matrices).",
+                    q3: "Guidance for Phase 2, Question 3 (Probability)."
+                }
+            },
+            // Add more quizzes here with their unique ID
+        };
+
+        const quizData = allQuizzes[quizId];
+        if (quizData) {
+            const quizButton = quizForm.querySelector('.submit-quiz-btn');
+            quizButton.addEventListener('click', () => {
+                let score = 0;
+                const wrongQuestions = [];
+                const form = quizForm;
+                
+                for (const [question, correctAnswer] of Object.entries(quizData.answers)) {
+                    const selected = form.querySelector(`input[name="${question}"]:checked`);
+                    if (selected && selected.value === correctAnswer) {
+                        score++;
+                    } else {
+                        wrongQuestions.push(question);
+                    }
+                }
+                
+                const resultsDiv = form.querySelector('.quiz-results');
+                let resultsHTML = `<h3>Your Score: ${score} / ${Object.keys(quizData.answers).length}</h3>`;
+                
+                if (wrongQuestions.length > 0) {
+                    resultsHTML += `<h4>Adaptive Guidance:</h4><ul>`;
+                    wrongQuestions.forEach(qId => {
+                        resultsHTML += `<li>${quizData.guidance[qId]}</li>`;
+                    });
+                    resultsHTML += `</ul>`;
+                } else {
+                    resultsHTML += `<p style="color: #15803d; font-weight: bold;">Great job! You answered all questions correctly.</p>`;
+                }
+                
+                resultsDiv.innerHTML = resultsHTML;
+                resultsDiv.style.display = 'block';
+            });
+        }
     }
 
+
     // --- 5. Table of Contents Scrollspy ---
+    // (Same as previous version)
     const tocContainer = document.querySelector('.toc');
     const headings = document.querySelectorAll('main h3');
     if (tocContainer && headings.length > 0) {
-        // Create ToC links
         headings.forEach((heading, index) => {
             const id = `section-${index}`;
             heading.id = id;
@@ -101,7 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
             listItem.appendChild(link);
             tocContainer.appendChild(listItem);
         });
-
         const tocLinks = tocContainer.querySelectorAll('a');
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
@@ -112,8 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     correspondingLink.parentElement.classList.add('active');
                 }
             });
-        }, { rootMargin: "0px 0px -80% 0px" }); // Activate when heading is 20% from the top
-
+        }, { rootMargin: "0px 0px -80% 0px" });
         headings.forEach(heading => observer.observe(heading));
     }
 });
